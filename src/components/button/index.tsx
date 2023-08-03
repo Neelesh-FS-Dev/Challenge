@@ -19,13 +19,15 @@ type Props = {
 } & PressableProps;
 
 const Button: React.FC<Props> = ({style, variant, title, icon, ...props}) => {
+  const fontFamily = 'Montserrat-VariableFont_wght';
+
   return (
     <Pressable
       style={[styles.wrapperCustom, styles[variant], style]}
       {...props}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         {icon && <Image source={icon} style={{marginRight: 10}} />}
-        <Text style={{color: '#fff'}}>{title}</Text>
+        <Text style={{color: '#fff', fontFamily: fontFamily}}>{title}</Text>
       </View>
     </Pressable>
   );

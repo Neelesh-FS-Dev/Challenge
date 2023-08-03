@@ -1,12 +1,14 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
 import * as React from 'react';
 import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Screen1 from './src/screens/screen1';
 import Screen3 from './src/screens/screen3';
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
 const League = () => (
   <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -35,26 +37,36 @@ const App = () => {
         screenOptions={({route}) => ({
           tabBarIcon: ({focused, color, size}) => {
             let iconName;
-
-            // Define icons based on the route name
-            if (route.name === 'Home') {
-              iconName = focused ? 'home' : 'home'; // Replace with appropriate icon names
+            if (route.name === 'Screen1') {
+              iconName = 'home';
+              color = focused ? 'blue' : 'grey';
+              size = focused ? 25 : 20;
             } else if (route.name === 'Leagues') {
-              iconName = focused ? 'trophy' : 'trophy';
+              iconName = 'trophy';
+              color = focused ? 'blue' : 'grey';
+              size = focused ? 25 : 20;
             } else if (route.name === 'Research') {
-              iconName = focused ? 'search' : 'search';
+              iconName = 'search';
+              color = focused ? 'blue' : 'grey';
+              size = focused ? 25 : 20;
             } else if (route.name === 'Leaderboard') {
-              iconName = focused ? 'chart-bar' : 'chart-bar';
+              iconName = 'chart-bar';
+              color = focused ? 'blue' : 'grey';
+              size = focused ? 25 : 20;
             } else if (route.name === 'Profile') {
-              iconName = focused ? 'user' : 'user';
+              iconName = 'user';
+              color = focused ? 'blue' : 'grey';
+              size = focused ? 25 : 20;
             }
 
-            return <Icon name={iconName} size={size} color={color} />;
+            return (
+              <FontAwesome5Icon name={iconName} size={size} color={color} />
+            );
           },
         })}
-        tabBarOptions={{
+        screenOptions={{
           activeTintColor: 'blue',
-          inactiveTintColor: 'gray',
+          inactiveTintColor: 'grey',
         }}>
         <Tab.Screen
           name="Home"

@@ -1,28 +1,29 @@
+/* eslint-disable react-native/no-inline-styles */
 import {View, Text, Modal, Dimensions, StatusBar, Image} from 'react-native';
 import React, {useState} from 'react';
 import Button from '../../components/button';
-import {Picker} from '@react-native-picker/picker';
 import styles from './style';
+import {Demo} from '../../components/picker';
 
 const Screen1 = () => {
   const [showBottomSheet, setShowBottomSheet] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('Element 1');
 
+  const fontFamily = 'Montserrat-VariableFont_wght';
   const games = [
     {
-      title: 'Under or Over',
+      title: 'UNDER OR OVER',
       startingIn: '03:23:12',
-      description:
-        'Bitcoin price will be under $24,524 at 7 a ET on 22nd Jan’21',
+      description: 'Bitcoin price will be under ',
+      content: '$24,524 at 7 a ET on 22nd Jan’21',
     },
   ];
 
   const gameStats = [
-    {title: 'Prize Pool', value: '$12,000'},
-    {title: 'Under', value: '3.25x'},
-    {title: 'Over', value: '1.25x'},
+    {title: 'PRIZE POOL', value: '$12,000'},
+    {title: 'UNDER', value: '3.25x'},
+    {title: 'OVER', value: '1.25x'},
     {
-      title: 'Entry Fees',
+      title: 'ENTRY FEES',
       value: '5',
       icon: require('../../../assets/images/gold.png'),
     },
@@ -36,18 +37,6 @@ const Screen1 = () => {
   };
   const screenHeight = Dimensions.get('screen').height;
   const bottomSheetHeight = screenHeight * 0.4;
-  const elements = [
-    'Element 1',
-    'Element 2',
-    'Element 3',
-    'Element 4',
-    'Element 5',
-    'Element 6',
-    'Element 7',
-    'Element 8',
-    'Element 9',
-    'Element 10',
-  ];
 
   return (
     <View style={styles.container}>
@@ -57,17 +46,27 @@ const Screen1 = () => {
       {games.map((game, index) => (
         <View key={index} style={styles.gameCard}>
           <View style={styles.gameInfo}>
-            <Text style={styles.gameTitle}>
-              {game.title}
+            <View style={{flexDirection: 'row', alignItems: 'center', gap: 8}}>
+              <Text style={styles.gameTitle}>{game.title}</Text>
               <Image source={require('../../../assets/images/info.png')} />
-            </Text>
-            <Text style={styles.startingIn}>
-              Starting in{' '}
+            </View>
+            <View style={{flexDirection: 'row', gap: 7, alignItems: 'center'}}>
+              <Text style={styles.startingIn}>Starting in</Text>
               <Image source={require('../../../assets/images/Clock.png')} />
-              {game.startingIn}
-            </Text>
+              <Text style={styles.startingIn}>{game.startingIn}</Text>
+            </View>
           </View>
           <Text style={styles.gameDescription}>{game.description}</Text>
+          <Text
+            style={{
+              fontSize: 14,
+              color: '#FFF',
+              fontFamily: fontFamily,
+              marginHorizontal: 15,
+              marginTop: 5,
+            }}>
+            {game.content}
+          </Text>
         </View>
       ))}
 
@@ -83,29 +82,29 @@ const Screen1 = () => {
         <Text style={styles.predictionText}>What’s your prediction?</Text>
         <View style={styles.predictionButtonsContainer}>
           <Button
-            icon={require('../../../assets/images/up.png')}
+            icon={require('../../../assets/images/arrow.png')}
             variant="primary"
             title="Under"
-            onPress={handleUnderButtonClick}
           />
           <Button
-            icon={require('../../../assets/images/down.png')}
+            icon={require('../../../assets/images/arrowdown.png')}
             variant="secondary"
             title="Over"
+            onPress={handleUnderButtonClick}
           />
         </View>
       </View>
 
       <View style={styles.playersChartContainer}>
         <View style={styles.playersChartHeader}>
-          <Text>
+          <View style={{flexDirection: 'row', alignItems: 'center', gap: 9}}>
             <Image source={require('../../../assets/images/icon.png')} />
-            355 Players
-          </Text>
-          <Text>
+            <Text style={{fontFamily: fontFamily}}>355 Players</Text>
+          </View>
+          <View style={{flexDirection: 'row', alignItems: 'center', gap: 9}}>
             <Image source={require('../../../assets/images/chart.png')} />
-            View chart
-          </Text>
+            <Text style={{fontFamily: fontFamily}}>View chart</Text>
+          </View>
         </View>
         <View style={styles.playersChart}>
           <View style={styles.predictedUnder} />
@@ -132,20 +131,12 @@ const Screen1 = () => {
               </Text>
               <Text style={styles.entryTicket}>Entry Ticket</Text>
             </View>
-            <Picker
-              style={styles.picker}
-              selectedValue={selectedValue}
-              onValueChange={(itemValue, itemIndex) =>
-                setSelectedValue(itemValue)
-              }>
-              {elements.map((element, index) => (
-                <Picker.Item key={index} label={element} value={element} />
-              ))}
-            </Picker>
+
+            <Demo />
             <Text style={styles.youCanWin}>You can win</Text>
             <View style={styles.rewardContainer}>
               <Text style={styles.rewardAmount}>$2000</Text>
-              <Text>
+              <Text style={{color: '#727682', fontFamily: fontFamily}}>
                 Total
                 <Image source={require('../../../assets/images/gold.png')} /> 5
               </Text>

@@ -2,6 +2,8 @@
 import React from 'react';
 import {View, Text, StatusBar, Image, ScrollView} from 'react-native';
 import styles from './style';
+const fontFamily = 'Montserrat-VariableFont_wght';
+
 const data = [
   {
     id: '1',
@@ -61,11 +63,14 @@ const Screen3 = () => {
       <View style={{backgroundColor: '#fff'}}>
         <View style={styles.header}>
           <Image source={require('../../../assets/images/Vector.png')} />
-          <Text style={{color: '#727682', fontSize: 14}}>Profile</Text>
+          <Text
+            style={{color: '#727682', fontSize: 14, fontFamily: fontFamily}}>
+            Profile
+          </Text>
           <Image source={require('../../../assets/images/message.png')} />
         </View>
         <View style={styles.profileImage}>
-          <Image source={require('../../../assets/images/profile.png')} />
+          <Image source={require('../../../assets/images/girl.png')} />
           <Text style={styles.profileName}>Jina Simons</Text>
           <Text style={styles.profilePoints}>6000 Pts</Text>
           <Text style={styles.profileDescription}>
@@ -80,14 +85,30 @@ const Screen3 = () => {
         </View>
         <View style={styles.statsContainer}>
           <View style={styles.statsText}>
-            <Text>under or over</Text>
+            <Text
+              style={{
+                fontSize: 14,
+                fontFamily: fontFamily,
+                color: '#727682',
+                fontWeight: '600',
+              }}>
+              Under or Over
+            </Text>
             <View style={{flexDirection: 'row', alignItems: 'center', gap: 5}}>
               <Image source={require('../../../assets/images/up.png')} />
               <Text style={styles.statsPercentage}>81%</Text>
             </View>
           </View>
           <View style={styles.statsText}>
-            <Text>Top 5</Text>
+            <Text
+              style={{
+                fontSize: 14,
+                fontFamily: fontFamily,
+                color: '#727682',
+                fontWeight: '600',
+              }}>
+              Top 5
+            </Text>
             <View style={{flexDirection: 'row', alignItems: 'center', gap: 5}}>
               <Image source={require('../../../assets/images/down.png')} />
               <Text style={styles.statsPercentage}>-51%</Text>
@@ -103,8 +124,16 @@ const Screen3 = () => {
           paddingVertical: 20,
           backgroundColor: '#fff',
         }}>
-        <Text style={{fontSize: 14, fontWeight: '600'}}>Games played</Text>
-        <Text style={{fontSize: 14, fontWeight: '600', color: '#6231AD'}}>
+        <Text style={{fontSize: 14, fontWeight: '600', fontFamily: fontFamily}}>
+          Games played
+        </Text>
+        <Text
+          style={{
+            fontSize: 14,
+            fontWeight: '600',
+            fontFamily: fontFamily,
+            color: '#6231AD',
+          }}>
           Badges
         </Text>
       </View>

@@ -8,8 +8,8 @@ type Style = {
 
 const styles = StyleSheet.create<Style>({
   wrapperCustom: {
-    paddingVertical: 10,
-    paddingHorizontal: 30,
+    paddingVertical: 13,
+    paddingHorizontal: 55,
     justifyContent: 'center',
     alignItems: 'center',
   },
